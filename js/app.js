@@ -1,5 +1,5 @@
-// this function takes the question object returned by the StackOverflow request
-// and returns new result to be appended to DOM
+/* this function takes the question object returned by the StackOverflow request
+and returns new result to be appended to DOM */
 var showQuestion = function(question) {
 	
 	// clone our result template code
