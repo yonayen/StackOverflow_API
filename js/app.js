@@ -101,6 +101,7 @@ $(document).ready( function() {
 		$('.results').html('');
 		// assign the value typed in by user to variable
 		var answerers = $(this).find("input[name='answerers']").val();
+		getTopanswers(answerers);
 	});
 });
 
