@@ -94,7 +94,8 @@ $(document).ready( function() {
 		getUnanswered(tags);
 	});
 
-	// For 'Top Answers for Tag' input
+/* --- TOP ANSWERS FOR TAGS --- */
+
 	$('.inspiration-getter').submit( function(e){
 		e.preventDefault();
 		// empty the results div
@@ -105,9 +106,11 @@ $(document).ready( function() {
 	});
 });
 
-/* --- TOP ANSWERS FOR TAGS --- */
+// Takes string that is searched for on StackOverflow
+var getTopanswers = function(answerers) {
+	// StackOverflow API parameters
+};
 
-// 1- Add .inspiration-getter to jQuery events block
 // 2- Create getTopanswers function 
 // 3- Use proper endpoints for API request
 // 4- Successfully sends request (function)
