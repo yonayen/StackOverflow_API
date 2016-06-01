@@ -94,3 +94,13 @@ $(document).ready( function() {
 		getUnanswered(tags);
 	});
 });
+
+/* --- TOP ANSWERS FOR TAGS --- */
+
+// 1- Add .inspiration-getter to jQuery events block
+// 2- Create getTopanswers function 
+// 3- Use proper endpoints for API request
+// 4- Successfully sends request (function)
+// 5- Fails to send request
+// 6- Create showAnswer function that clones template used for displaying results
+// 7- showSearchResults & showResults functions
