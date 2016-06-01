@@ -97,6 +97,10 @@ $(document).ready( function() {
 	// For 'Top Answers for Tag' input
 	$('.inspiration-getter').submit( function(e){
 		e.preventDefault();
+		// empty the results div
+		$('.results').html('');
+		// assign the value typed in by user to variable
+		var answerers = $(this).find("input[name='answerers']").val();
 	});
 });
 
