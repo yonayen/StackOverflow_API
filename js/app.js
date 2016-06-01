@@ -65,7 +65,7 @@ var getUnanswered = function(tags) {
 		dataType: "jsonp",//use jsonp to avoid cross origin issues
 		type: "GET",
 	})
-	.done(function(result){ //this waits for the ajax to return with a succesful promise object
+	.done(function(tags){ //this waits for the ajax to return with a succesful promise object
 		var searchResults = showSearchResults(request.tagged, result.items.length);
 
 		$('.search-results').html(searchResults);
@@ -117,16 +117,52 @@ var getTopanswers = function(answerers) {
 	$.ajax({
 		url: "http://api.stackexchange.com/2.2//tags/{tag}/top-answerers/{period}",
 		data: topAnswerRequest,
-		dataType: "jsonp",//use jsonp to avoid cross origin issues
+		dataType: "jsonp",//use jsonp to avoid cross origin issues ... WHY?
 		type: "GET",
 	})
+	.done(function(result){ //this waits for the ajax to return with a succesful promise object
+		var searchResults = showSearchResults(topAnswerRequest.tagged, result.items.length);
+
+		$('.search-results').html(searchResults);
+		//$.each is a higher order function. It takes an array and a function as an argument.
+		//The function is executed once for each item in the array.
+		$.each(result.items, function(i, item) {
+			var question = showQuestion(item);
+			$('.results').append(question);
+		});
+	})
+	// error message for request send //
+	.fail(function(jqXHR, error){ //this waits for the ajax to return with an error promise object
+		var errorElem = showError(error);
+		$('.search-results').append(errorElem);
+	});
 };
 
-// 2- Create getTopanswers function 
-// 3- Use proper endpoints for API request
-// 4- Successfully sends request (function)
-// 5- Fails to send request
-// 6- Create showAnswer function that clones template used for displaying results
+/* this function takes the question object returned by the StackOverflow request
+and returns new result to be appended to DOM */
+
+var getTopanswers = function(answerers) {
+
+	// clone our result template code
+	var result = $('.templates .question').clone();
+
+	// Set the answer properties in result
+	var answerElem = result.find('.question-text a');
+	answerElem.attr('href', tag.link);
+	answerElem.text(tag.display_name);
+
+	// set the reputation property in result
+	var reputationScore = result.find('.asked-date');
+	reputationScore.text(tags.reputation);
+
+	// set the .viewed to acceptRate
+	var acceptRate = result.find('.viewed');
+	acceptRate.text(tags.accept_rate);
+
+	return result;
+};
+
+
 // 7- showSearchResults & showResults functions
 
 
