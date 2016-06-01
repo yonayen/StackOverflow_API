@@ -93,6 +93,11 @@ $(document).ready( function() {
 		var tags = $(this).find("input[name='tags']").val();
 		getUnanswered(tags);
 	});
+
+	// For 'Top Answers for Tag' input
+	$('.inspiration-getter').submit( function(e){
+		e.preventDefault();
+	});
 });
 
 /* --- TOP ANSWERS FOR TAGS --- */
@@ -104,3 +109,5 @@ $(document).ready( function() {
 // 5- Fails to send request
 // 6- Create showAnswer function that clones template used for displaying results
 // 7- showSearchResults & showResults functions
+
+
