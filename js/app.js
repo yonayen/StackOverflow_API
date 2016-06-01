@@ -1,10 +1,11 @@
 /* this function takes the question object returned by the StackOverflow request
 and returns new result to be appended to DOM */
+
 var showQuestion = function(question) {
-	
+
 	// clone our result template code
 	var result = $('.templates .question').clone();
-	
+
 	// Set the question properties in result
 	var questionElem = result.find('.question-text a');
 	questionElem.attr('href', question.link);
@@ -75,6 +76,7 @@ var getUnanswered = function(tags) {
 			$('.results').append(question);
 		});
 	})
+	// error message for request send //
 	.fail(function(jqXHR, error){ //this waits for the ajax to return with an error promise object
 		var errorElem = showError(error);
 		$('.search-results').append(errorElem);
