@@ -109,6 +109,12 @@ $(document).ready( function() {
 // Takes string that is searched for on StackOverflow
 var getTopanswers = function(answerers) {
 	// StackOverflow API parameters
+	var topAnswerRequest = { 
+		tagged: answerers,
+		site: 'stackoverflow',
+		order: 'desc',
+		sort: 'creation'
+	};
 };
 
 // 2- Create getTopanswers function 
