@@ -112,9 +112,14 @@ var getTopanswers = function(answerers) {
 	var topAnswerRequest = { 
 		tagged: answerers,
 		site: 'stackoverflow',
-		order: 'desc',
-		sort: 'creation'
+		period: 'month'
 	};
+	$.ajax({
+		url: "http://api.stackexchange.com/2.2//tags/{tag}/top-answerers/{period}",
+		data: topAnswerRequest,
+		dataType: "jsonp",//use jsonp to avoid cross origin issues
+		type: "GET",
+	})
 };
 
 // 2- Create getTopanswers function 
