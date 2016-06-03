@@ -107,7 +107,7 @@ $(document).ready( function() {
 });
 
 // Takes string that is searched for on StackOverflow
-var getTopanswers = function(answerers) {
+var getTopanswers = function(tag) {
 	// StackOverflow API parameters
 	var topAnswerRequest = { 
 		tagged: answerers,
@@ -141,7 +141,7 @@ var getTopanswers = function(answerers) {
 /* this function takes the question object returned by the StackOverflow request
 and returns new result to be appended to DOM */
 
-var getTopanswers = function(answerers) {
+var showAnswers = function(answerers) {
 
 	// clone our result template code
 	var result = $('.templates .question').clone();
